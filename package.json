@@ -1,0 +1,26 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "second study project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pitmak/frontend-project-46.git"
+  },
+  "author": "pitmak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pitmak/frontend-project-46/issues"
+  },
+  "homepage": "https://github.com/pitmak/frontend-project-46#readme",
+  "bin": {
+    "code": "bin/gendiff.js"
+  },
+  "devDependencies": {
+    "commander": "^10.0.1",
+    "eslint": "^8.41.0"
+  }
+}
