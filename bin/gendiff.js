@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 // eslint-disable-next-line no-undef
-const { program } = require('commander');
+import { program } from 'commander';
+import gendiff from '../src/gendiff.js';
 
 program
   .name('gendiff')
@@ -9,6 +10,9 @@ program
   .version('1.0.0')
   .argument('<filepath1>', 'first file to compare')
   .argument('<filepath2>', 'second file to compare')
-  .option('-f, --format <type>', 'output format');
+  .option('-f, --format <type>', 'output format')
+  .action((filepath1, filepath2) => {
+    console.log(gendiff(filepath1, filepath2));
+  });
 
 program.parse();
