@@ -12,6 +12,16 @@ const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
 test('compare JSON files', () => {
   const expected = readFile('result');
+
   const result = gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
+
+  expect(result).toBe(expected);
+});
+
+test('compare YAML files', () => {
+  const expected = readFile('result');
+
+  const result = gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'));
+
   expect(result).toBe(expected);
 });
