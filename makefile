@@ -9,4 +9,4 @@ lint:
 test:
 	npm run test
 test-coverage:
-	npm jest --coverage
+	npx jest --coverage
