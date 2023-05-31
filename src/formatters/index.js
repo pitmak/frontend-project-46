@@ -4,13 +4,12 @@ import json from './json.js';
 
 export default (diff, format) => {
   switch (format) {
-    case 'stylish':
-      return stylish(diff);
     case 'plain':
       return plain(diff);
     case 'json':
       return json(diff);
+    case 'stylish':
     default:
-      return '';
+      return stylish(diff);
   }
 };

@@ -13,40 +13,25 @@ const toString = (value, depth) => {
 
 const stylish = (diff, depth = 0) => {
   const tabs = '    '.repeat(depth);
-  const result = diff.reduce((acc, node) => {
+
+  const result = diff.map((node) => {
     switch (node.type) {
       case diffNodeType.added:
-        return [
-          ...acc,
-          `${tabs}  + ${node.name}: ${toString(node.value, depth + 1)}\n`,
-        ];
+        return `${tabs}  + ${node.name}: ${toString(node.value, depth + 1)}`;
       case diffNodeType.deleted:
-        return [
-          ...acc,
-          `${tabs}  - ${node.name}: ${toString(node.value, depth + 1)}\n`,
-        ];
+        return `${tabs}  - ${node.name}: ${toString(node.value, depth + 1)}`;
       case diffNodeType.unchanged:
-        return [
-          ...acc,
-          `${tabs}    ${node.name}: ${toString(node.value, depth + 1)}\n`,
-        ];
+        return `${tabs}    ${node.name}: ${toString(node.value, depth + 1)}`;
       case diffNodeType.modified:
-        return [
-          ...acc,
-          `${tabs}  - ${node.name}: ${toString(node.oldValue, depth + 1)}\n`,
-          `${tabs}  + ${node.name}: ${toString(node.newValue, depth + 1)}\n`,
-        ];
+        return `${tabs}  - ${node.name}: ${toString(node.oldValue, depth + 1)}\n`
+          + `${tabs}  + ${node.name}: ${toString(node.newValue, depth + 1)}`;
       case diffNodeType.recursed:
-        return [
-          ...acc,
-          `${tabs}    ${node.name}: ${stylish(node.children, depth + 1)}\n`,
-        ];
       default:
-        return acc;
+        return `${tabs}    ${node.name}: ${stylish(node.children, depth + 1)}`;
     }
-  }, []);
+  });
 
-  return ['{\n', ...result, tabs, '}'].join('');
+  return ['{', ...result, `${tabs}}`].join('\n');
 };
 
 export default stylish;
