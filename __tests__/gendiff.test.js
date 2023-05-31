@@ -1,8 +1,9 @@
-import gendiff from '../src/gendiff.js';
-import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
+
+import gendiff from '../src/gendiff';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

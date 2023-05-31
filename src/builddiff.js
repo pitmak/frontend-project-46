@@ -1,4 +1,4 @@
-import diffNodeType from './difftypes.js';
+import diffNodeType from './difftypes';
 
 const buildDiff = (obj1, obj2) => {
   const merged = { ...obj1, ...obj2 };

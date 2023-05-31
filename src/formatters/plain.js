@@ -1,4 +1,4 @@
-import diffNodeType from '../difftypes.js';
+import diffNodeType from '../difftypes';
 
 const toString = (value) => {
   if (value instanceof Object) {
@@ -15,16 +15,19 @@ const plain = (diff, parent = '') => {
     const begin = `Property '${parent}${node.name}' was`;
     switch (node.type) {
       case diffNodeType.added:
-        return [...acc,
-        `${begin} added with value: ${toString(node.value)}`,
+        return [
+          ...acc,
+          `${begin} added with value: ${toString(node.value)}`,
         ];
       case diffNodeType.deleted:
-        return [...acc,
-        `${begin} removed`,
+        return [
+          ...acc,
+          `${begin} removed`,
         ];
       case diffNodeType.modified:
-        return [...acc,
-        `${begin} updated. From ${toString(node.oldValue)} to ${toString(node.newValue)}`,
+        return [
+          ...acc,
+          `${begin} updated. From ${toString(node.oldValue)} to ${toString(node.newValue)}`,
         ];
       case diffNodeType.recursed: {
         const newParent = `${parent}${node.name}.`;

@@ -2,7 +2,8 @@
 
 // eslint-disable-next-line no-undef
 import { Option, program } from 'commander';
-import gendiff from '../src/gendiff.js';
+
+import gendiff from '../src/gendiff';
 
 program
   .name('gendiff')
