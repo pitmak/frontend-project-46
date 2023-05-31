@@ -2,9 +2,9 @@ import path from 'node:path';
 import { readFileSync } from 'node:fs';
 import { cwd } from 'node:process';
 
-import parse from './parsers';
-import buildDiff from './builddiff';
-import applyFormatter from './formatters/index';
+import parse from './parsers.js';
+import buildDiff from './builddiff.js';
+import applyFormatter from './formatters/index.js';
 
 export default (filepath1, filepath2, format = 'stylish') => {
   const content1 = readFileSync(path.resolve(cwd(), filepath1), 'utf-8');

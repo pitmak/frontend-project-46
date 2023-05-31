@@ -1,4 +1,4 @@
-import diffNodeType from '../difftypes';
+import diffNodeType from '../difftypes.js';
 
 const toString = (value) => {
   if (value instanceof Object) {

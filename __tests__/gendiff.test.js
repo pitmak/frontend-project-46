@@ -3,7 +3,7 @@ import { dirname } from 'path';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import gendiff from '../src/gendiff';
+import gendiff from '../src/gendiff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

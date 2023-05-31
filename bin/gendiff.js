@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-// eslint-disable-next-line no-undef
 import { Option, program } from 'commander';
 
-import gendiff from '../src/gendiff';
+import gendiff from '../src/gendiff.js';
 
 program
   .name('gendiff')
