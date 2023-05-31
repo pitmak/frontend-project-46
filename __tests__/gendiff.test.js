@@ -11,38 +11,34 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
-const testRun = (filename1, filename2, expectedFilename, format) => {
-  const expected = readFile(expectedFilename);
+test('compare JSON files: stylish', () => {
+  const expected = readFile('result_stylish');
 
-  const result = gendiff(getFixturePath(filename1), getFixturePath(filename2), format);
+  const result = gendiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish');
 
   expect(result).toBe(expected);
-};
-
-test('compare JSON files: stylish', () => {
-  testRun('file1.json', 'file2.json', 'result_stylish', 'stylish');
-});
-
-test('compare YAML files: stylish', () => {
-  testRun('file1.yaml', 'file2.yaml', 'result_stylish', 'stylish');
-});
-
-test('compare JSON files: plain', () => {
-  testRun('file1.json', 'file2.json', 'result_plain', 'plain');
 });
 
 test('compare YAML files: plain', () => {
-  testRun('file1.yaml', 'file2.yaml', 'result_plain', 'plain');
+  const expected = readFile('result_plain');
+
+  const result = gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'), 'plain');
+
+  expect(result).toBe(expected);
 });
 
-test('compare JSON files: json', () => {
-  testRun('file1.json', 'file2.json', 'result_json', 'json');
-});
+test('compare mix files: json', () => {
+  const expected = readFile('result_json');
 
-test('compare YAML files: json', () => {
-  testRun('file1.yaml', 'file2.yaml', 'result_json', 'json');
+  const result = gendiff(getFixturePath('file1.json'), getFixturePath('file2.yaml'), 'json');
+
+  expect(result).toBe(expected);
 });
 
 test('compare mix files: default', () => {
-  testRun('file1.yaml', 'file2.json', 'result_stylish');
+  const expected = readFile('result_stylish');
+
+  const result = gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.json'));
+
+  expect(result).toBe(expected);
 });
