@@ -4,7 +4,7 @@ import { cwd } from 'node:process';
 
 import parse from './parsers.js';
 import buildDiff from './builddiff.js';
-import applyFormatter from './formatters.js';
+import applyFormatter from './formatters/index.js';
 
 export default (filepath1, filepath2, format = 'stylish') => {
   const content1 = readFileSync(path.resolve(cwd(), filepath1), 'utf-8');
@@ -14,7 +14,6 @@ export default (filepath1, filepath2, format = 'stylish') => {
   const obj2 = parse(content2, path.extname(filepath2));
 
   const diff = buildDiff(obj1, obj2);
-  console.log(diff);
 
   return applyFormatter(diff, format);
 };
