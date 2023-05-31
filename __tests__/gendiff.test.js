@@ -34,6 +34,14 @@ test('compare YAML files: plain', () => {
   testRun('file1.yaml', 'file2.yaml', 'result_plain', 'plain');
 });
 
+test('compare JSON files: json', () => {
+  testRun('file1.json', 'file2.json', 'result_json', 'json');
+});
+
+test('compare YAML files: json', () => {
+  testRun('file1.yaml', 'file2.yaml', 'result_json', 'json');
+});
+
 test('compare mix files: default', () => {
   testRun('file1.yaml', 'file2.json', 'result_stylish');
 });

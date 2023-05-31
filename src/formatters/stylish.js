@@ -13,7 +13,7 @@ const toString = (value, depth) => {
   return ['{\n', ...result, '    '.repeat(depth), '}'].join('');
 };
 
-const stylish = (diff, initial = [], depth = 0) => {
+const stylish = (diff, depth = 0) => {
   const tabs = '    '.repeat(depth);
   const result = diff.reduce((acc, node) => {
     switch (node.type) {
@@ -36,10 +36,10 @@ const stylish = (diff, initial = [], depth = 0) => {
         ];
       case diffNodeType.recursed:
         return [...acc,
-        `${tabs}    ${node.name}: ${stylish(node.children, [], depth + 1)}\n`,
+        `${tabs}    ${node.name}: ${stylish(node.children, depth + 1)}\n`,
         ];
     }
-  }, initial);
+  }, []);
 
   return ['{\n', ...result, tabs, '}'].join('');
 };

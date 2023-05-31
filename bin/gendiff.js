@@ -12,7 +12,7 @@ program
   .argument('<filepath1>', 'first file to compare')
   .argument('<filepath2>', 'second file to compare')
   .addOption(new Option('-f, --format <type>', 'output format')
-    .choices(['stylish', 'plain'])
+    .choices(['stylish', 'plain', 'json'])
     .default('stylish'))
   .action((filepath1, filepath2, options) => {
     console.log(gendiff(filepath1, filepath2, options.format));
