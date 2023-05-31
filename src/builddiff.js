@@ -10,7 +10,7 @@ const buildDiff = (obj1, obj2) => {
       if (obj1[key] instanceof Object && obj2[key] instanceof Object) {
         newNode.type = diffNodeType.recursed;
         newNode.children = buildDiff(obj1[key], obj2[key]);
-      } else if (obj1[key] == obj2[key]) {
+      } else if (obj1[key] === obj2[key]) {
         newNode.type = diffNodeType.unchanged;
         newNode.value = obj1[key];
       } else {
